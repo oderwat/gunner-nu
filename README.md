@@ -7,6 +7,7 @@ You need nushell to use it! You activate it using `source gunner.nu`
 ## Quickstart
 
 ```
+# nushell is required
 git clone https://github.com/hara/gunner.git
 source ./gunner/gunner.nu
 gunner init
@@ -25,7 +26,19 @@ gunner run examples/erlang-only.gleam
 * allows running `gleam` directly inside the sandbox `gunner gleam deps list` (this can result in unexpected behavior)
 * it uses a volume to cache the dependencies and parts of the build
 
-## Commands
+## Why this?
+
+I wanted a quick and easy way to run Gleam code snippets while learning and demonstrating Gleam. The [Gleam Tour](https://tour.gleam.run/) is great but can't add packages. It also seems not to be "up to date" with the latest Gleam features.
+
+## Why "Gunner"?
+
+G(leam) R(unner) and because you can shoot your foot with it.
+
+## Why "NuShell"?
+
+I like NuShell and it allows me to quickly create a custom command with flags and parameters, help and completions.
+
+## Command reference
 
 ### gunner init
 
@@ -110,3 +123,9 @@ Flags:
 Parameters:
   ...args <any>: the packages to add
 ```
+
+## License and copyright
+
+This project is released under the [MIT License](LICENSE.md).
+
+Copyright (c) 2024 Hans Raaf
