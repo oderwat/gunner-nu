@@ -14,6 +14,7 @@ gunner init
 gunner run examples/hello.gleam
 gunner add gleam_erlang
 gunner run examples/erlang-only.gleam
+gunner gleam deps list
 ```
 
 ## Here are some of its key functionalities:
