@@ -24,7 +24,7 @@ export def "gunner init" [
         CMD ["gleam","run","--no-print-progress"]
         '# | save Dockerfile
         #' fix that syntax highlighting
-        
+        docker pull alpine:latest
         docker build -t gunner:latest .
         ($package | each { docker run --rm --volume gunner:/runner gunner gleam add $in }) | ignore
         docker run --rm --volume gunner:/runner gunner gleam run
