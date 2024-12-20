@@ -81,3 +81,9 @@ export def "gunner gleam" [
 ]: nothing -> nothing {
     docker run --rm --volume gunner:/runner gunner gleam ...$args
 }
+
+# Remove the gunner docker image and volume
+export def "gunner deinit" []: nothing -> nothing {
+    docker image rm -f gunner
+    docker volume rm -f gunner
+}

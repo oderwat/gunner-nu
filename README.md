@@ -125,6 +125,18 @@ Parameters:
   ...args <any>: the packages to add
 ```
 
+### gunner deinit
+
+```
+Remove the gunner docker image and docker volume
+
+Usage:
+  > gunner deinit 
+
+Flags:
+  -h, --help: Display the help message for this command
+```
+
 ## License and copyright
 
 This project is released under the [MIT License](LICENSE.md).
