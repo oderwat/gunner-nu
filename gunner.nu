@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-# Initialize the gleam runner image (needs docker)
+# Initialize the gleam gunner image (needs docker)
 export def "gunner init" [
     ...package # the packages to add 
     ] {
@@ -19,16 +19,16 @@ export def "gunner init" [
             rebar3
         
         WORKDIR /
-        RUN gleam new runner
-        WORKDIR /runner
+        RUN gleam new gunner
+        WORKDIR /gunner
         CMD ["gleam","run","--no-print-progress"]
         '# | save Dockerfile
         #' fix that syntax highlighting
         docker pull alpine:latest
         docker build -t gunner:latest .
-        ($package | each { docker run --rm --volume gunner:/runner gunner gleam add $in }) | ignore
-        docker run --rm --volume gunner:/runner gunner gleam run
-        docker run --rm --volume gunner:/runner gunner rm -rf /runner/build/dev/erlang/runner
+        ($package | each { docker run --rm --volume gunner:/gunner gunner gleam add $in }) | ignore
+        docker run --rm --volume gunner:/gunner gunner gleam run
+        docker run --rm --volume gunner:/gunner gunner rm -rf /gunner/build/dev/erlang/gunner
         cd -
         rm -rf /tmp/gunner-build
     }
@@ -48,12 +48,12 @@ export def "gunner" [
         print $"File not found: '($gleam_file)'"
         return
     }
-    let path = ($"./($gleam_file):/runner/src/runner.gleam" | path expand)
+    let path = ($"./($gleam_file):/gunner/src/gunner.gleam" | path expand)
     if $format {
-        docker run -t --rm --volume gunner:/runner --volume $path gunner gleam format
+        docker run -t --rm --volume gunner:/gunner --volume $path gunner gleam format
     }
-    docker run --rm --volume gunner:/runner gunner rm -rf /runner/build/dev/erlang/runner
-    docker run -t --rm --volume gunner:/runner --volume $path gunner gleam run ...$target $vflag
+    docker run --rm --volume gunner:/gunner gunner rm -rf /gunner/build/dev/erlang/gunner
+    docker run -t --rm --volume gunner:/gunner --volume $path gunner gleam run ...$target $vflag
 }
 
 # Format a gleam code file
@@ -64,22 +64,22 @@ export def "gunner format" [
         print $"File not found: '($gleam_file)'"
         return
     }
-    let path = ($"./($gleam_file):/runner/src/runner.gleam" | path expand)
-    docker run -t --rm --volume gunner:/runner --volume $path gunner gleam format
+    let path = ($"./($gleam_file):/gunner/src/gunner.gleam" | path expand)
+    docker run -t --rm --volume gunner:/gunner --volume $path gunner gleam format
 }
 
-# Add a package to the runner
+# Add a package to the gunner
 export def "gunner add" [
     ...package # the packages to add
 ]: nothing -> nothing {
-    ($package | each { docker run --rm --volume gunner:/runner gunner gleam add $in }) | ignore
+    ($package | each { docker run --rm --volume gunner:/gunner gunner gleam add $in }) | ignore
 }
 
-# Runs any command in the runner (with gleam)
+# Runs any command in the gunner (with gleam)
 export def "gunner gleam" [
     ...args # the packages to add
 ]: nothing -> nothing {
-    docker run --rm --volume gunner:/runner gunner gleam ...$args
+    docker run --rm --volume gunner:/gunner gunner gleam ...$args
 }
 
 # Remove the gunner docker image and volume
