@@ -2,9 +2,9 @@
 
 Gunner is a simple Gleam language code runner that allows users to execute Gleam code snippets easily and efficiently.
 
-You need nushell to use it! You activate it using `source gunner.nu`
+You need Nushell to use it! You activate it using `source gunner.nu`
 
-## Quickstart
+## Quick start
 
 ```
 # nushell is required
@@ -33,9 +33,9 @@ I wanted a quick and easy way to run Gleam code snippets while learning and demo
 
 ## Why "Gunner"?
 
-G(leam) R(unner) and because you can shoot your foot with it.
+**G**leam R**unner** and because you can shoot your foot with it.
 
-## Why "NuShell"?
+## Why "Nushell"?
 
 I like Nushell, and it allows me to quickly create a custom command with flags and parameters, help and completions.
 
@@ -125,13 +125,13 @@ Parameters:
   ...args <any>: the packages to add
 ```
 
-### gunner deinit
+### gunner de-init
 
 ```
 Remove the gunner docker image and docker volume
 
 Usage:
-  > gunner deinit 
+  > gunner de-init 
 
 Flags:
   -h, --help: Display the help message for this command
