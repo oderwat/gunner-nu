@@ -1,6 +1,6 @@
-# Gunner
+# Gunner-Nu
 
-Gunner is a simple Gleam language code runner that allows users to execute Gleam code snippets easily and efficiently.
+Gunner-Nu is a simple Gleam language code runner that allows users to execute Gleam code snippets easily and efficiently.
 
 You need Nushell to use it! You activate it using `source gunner.nu`
 
