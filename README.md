@@ -37,7 +37,7 @@ G(leam) R(unner) and because you can shoot your foot with it.
 
 ## Why "NuShell"?
 
-I like NuShell and it allows me to quickly create a custom command with flags and parameters, help and completions.
+I like Nushell, and it allows me to quickly create a custom command with flags and parameters, help and completions.
 
 ## Command reference
 
